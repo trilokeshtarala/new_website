@@ -1,1 +1,0 @@
-<?php // Hide directory contents.

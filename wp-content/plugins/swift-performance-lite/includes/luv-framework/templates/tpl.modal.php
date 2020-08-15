@@ -1,1 +1,0 @@
-<div class="luv-modal luv-modal-hidden" data-modal></div>

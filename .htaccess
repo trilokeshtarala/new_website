@@ -164,3 +164,12 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /new_website/index.php [L]
 </IfModule>
 # END WordPress
+
+# BEGIN Enable Gzip Compression
+# The directives (lines) between `BEGIN Enable Gzip Compression` and `END Enable Gzip Compression` are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript
+</IfModule>
+# END Enable Gzip Compression

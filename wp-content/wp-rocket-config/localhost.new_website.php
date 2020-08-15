@@ -6,6 +6,7 @@ $rocket_logged_in_cookie = 'wordpress_logged_in_8786c3af7a0c88c3f594b413d38ad6cc
 $rocket_cache_mobile_files_tablet = 'desktop';
 $rocket_cache_mobile = 1;
 $rocket_do_caching_mobile_files = 1;
+$rocket_cache_webp = 1;
 $rocket_cache_reject_uri = '/new_website(/(.+/)?feed/?|/(?:.+/)?embed/|/(index\.php/)?wp\-json(/.*|$))';
 $rocket_cache_reject_cookies = 'wordpress_logged_in_.+|wp-postpass_|wptouch_switch_toggle|comment_author_|comment_author_email_';
 $rocket_cache_reject_ua = 'facebookexternalhit';

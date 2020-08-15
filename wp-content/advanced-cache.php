@@ -3,11 +3,15 @@ defined( 'ABSPATH' ) || exit;
 
 define( 'WP_ROCKET_ADVANCED_CACHE', true );
 
+if ( file_exists( 'C:\xampp\htdocs\new_website\wp-content\plugins\wp-rocket\inc\vendors/classes/class-rocket-mobile-detect.php' ) && ! class_exists( 'Rocket_Mobile_Detect' ) ) {
+	include_once 'C:\xampp\htdocs\new_website\wp-content\plugins\wp-rocket\inc\vendors/classes/class-rocket-mobile-detect.php';
+}
+
 if ( version_compare( phpversion(), '5.6' ) >= 0 ) {
 
 	spl_autoload_register(
 		function( $class ) {
-			$rocket_path    = 'C:\wamp64\www\new_website\wp-content\plugins\wp-rocket/';
+			$rocket_path    = 'C:\xampp\htdocs\new_website\wp-content\plugins\wp-rocket/';
 			$rocket_classes = [
 				'WP_Rocket\\Buffer\\Abstract_Buffer' => $rocket_path . 'inc/classes/Buffer/class-abstract-buffer.php',
 				'WP_Rocket\\Buffer\\Cache'           => $rocket_path . 'inc/classes/Buffer/class-cache.php',
@@ -44,7 +48,7 @@ if ( version_compare( phpversion(), '5.6' ) >= 0 ) {
 
 	$rocket_config_class = new \WP_Rocket\Buffer\Config(
 		[
-			'config_dir_path' => 'C:\wamp64\www\new_website/wp-content/wp-rocket-config/',
+			'config_dir_path' => 'C:\xampp\htdocs\new_website/wp-content/wp-rocket-config/',
 		]
 	);
 
@@ -54,7 +58,7 @@ if ( version_compare( phpversion(), '5.6' ) >= 0 ) {
 		),
 		$rocket_config_class,
 		[
-			'cache_dir_path' => 'C:\wamp64\www\new_website/wp-content/cache/wp-rocket/',
+			'cache_dir_path' => 'C:\xampp\htdocs\new_website/wp-content/cache/wp-rocket/',
 		]
 	) )->maybe_init_process();
 } else {

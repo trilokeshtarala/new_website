@@ -112,31 +112,6 @@ Header append Vary: Accept-Encoding
 </IfModule>
 </IfModule>
 
-<IfModule mod_mime.c>
-AddType text/html .html_gzip
-AddEncoding gzip .html_gzip
-</IfModule>
-<IfModule mod_setenvif.c>
-SetEnvIfNoCase Request_URI \.html_gzip$ no-gzip
-</IfModule>
-
-<IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteBase /new_website/
-RewriteCond %{HTTPS} on [OR]
-RewriteCond %{SERVER_PORT} ^443$ [OR]
-RewriteCond %{HTTP:X-Forwarded-Proto} https
-RewriteRule .* - [E=WPR_SSL:-https]
-RewriteCond %{HTTP:Accept-Encoding} gzip
-RewriteRule .* - [E=WPR_ENC:_gzip]
-RewriteCond %{REQUEST_METHOD} GET
-RewriteCond %{QUERY_STRING} =""
-RewriteCond %{HTTP:Cookie} !(wordpress_logged_in_.+|wp-postpass_|wptouch_switch_toggle|comment_author_|comment_author_email_) [NC]
-RewriteCond %{REQUEST_URI} !^(/new_website(/(.+/)?feed/?|/(?:.+/)?embed/|/(index\.php/)?wp\-json(/.*|$)))$ [NC]
-RewriteCond %{HTTP_USER_AGENT} !^(facebookexternalhit).* [NC]
-RewriteCond "%{DOCUMENT_ROOT}/C:\wamp64\www\new_website/wp-content/cache/wp-rocket/%{HTTP_HOST}%{REQUEST_URI}/index%{ENV:WPR_SSL}%{ENV:WPR_WEBP}.html%{ENV:WPR_ENC}" -f
-RewriteRule .* "C:\wamp64\www\new_website/wp-content/cache/wp-rocket/%{HTTP_HOST}%{REQUEST_URI}/index%{ENV:WPR_SSL}%{ENV:WPR_WEBP}.html%{ENV:WPR_ENC}" [L]
-</IfModule>
 # END WP Rocket
 
 # BEGIN WordPress
@@ -151,5 +126,4 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /new_website/index.php [L]
 </IfModule>
-
 # END WordPress
